@@ -27,7 +27,7 @@ const LoginPage = () => {
     <div className="flex h-screen items-center justify-center bg-contain bg-zinc-200">
       <div className="w-full max-w-md bg-white/50 p-6 rounded-2xl shadow-lg backdrop-blur-sm">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-          Hire Ready
+          Assessment Virus
         </h2>
         <div>
           <div>
@@ -79,7 +79,7 @@ const LoginPage = () => {
         </div>
         <p className="text-center mt-4 text-black">
           Do not have an account?{" "}
-          <Link to="/" className="text-blue-500">
+          <Link to="/signup" className="text-blue-500">
             Sign Up
           </Link>
         </p>
