@@ -4,11 +4,18 @@ import SignupPage from "./pages/SignUp";
 
 import Home from "./pages/Home";
 import Account from "./pages/Account";
+
+
+import Nav from "./pages/navbar.jsx";
+import ThankYou from "./pages/ThankYou.jsx";
+
+
 import TeacherAssignmentCreation from "./components/createAssignment";
 import TeacherDashboard from "./teacher/TeacherDashboard";
 
-import StudentTest from "./student/StudentDashboard";
 
+
+import StudentTest from "./student/StudentDashboard";
 const App = () => {
   return (
     <>
@@ -21,8 +28,15 @@ const App = () => {
           <Route path="/" element={<Home/>} />
           <Route path="/account-access" element={<Account/>}/>
 
+          <Route path="/thankyou" element={<ThankYou />} /> 
+
+
           <Route path="/student" element={<StudentTest />} />
+
+
+
           <Route path="/teacher" element={<TeacherDashboard />} />
+
         </Routes>
       </Router>
     </>
