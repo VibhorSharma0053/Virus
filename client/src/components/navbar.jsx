@@ -7,7 +7,7 @@ const Navbar = () => {
         <h1 className="text-3xl font-bold text-blue-400">OfflineIQ</h1>
 
         <div className="flex gap-4 pr-4">
-            <Link to="/account" className="">Login</Link>
+            <Link to="/login" className="">Login</Link>
             <Link to="/signup" className="">Sign Up</Link>
         </div>
       </div>

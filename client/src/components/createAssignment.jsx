@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const TeacherAssignmentCreation = (props) => {
   const [testTitle, setTestTitle] = useState("");
@@ -16,8 +15,7 @@ const TeacherAssignmentCreation = (props) => {
       correctAnswer: "",
     },
   ]);
-  const [creatorEmail] = useState("teacher@example.com"); // Or get it from session/localStorage
-  const navigate = useNavigate();
+  const creatorEmail = localStorage.getItem("userEmail") || "Teacher";
 
   const handleQuestionChange = (index, event) => {
     const updatedQuestions = [...questions];
@@ -61,7 +59,7 @@ const TeacherAssignmentCreation = (props) => {
         assignmentData
       );
       console.log(response.data);
-      navigate("/teacher"); // Navigate to a page with the list of assignments or confirmation
+      location.reload();
     } catch (error) {
       console.error("Error creating assignment:", error);
     }
@@ -205,7 +203,7 @@ const TeacherAssignmentCreation = (props) => {
           >
             Create Assignment
           </button>
-          <button onClick={props.close}>Cancel</button>
+          <button onClick={props.close} className="bg-red-500 text-white px-4 py-2 mx-5 mt-2 rounded">Cancel</button>
         </div>
       </form>
     </div>

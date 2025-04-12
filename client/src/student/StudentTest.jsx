@@ -3,8 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const StudentTest = () => {
-    // const studentEmail = localStorage.getItem("studentEmail");
-    const studentEmail="dffdsf"
+    const studentEmail=localStorage.getItem("userEmail") || "Student";
     const [assignments, setAssignments] = useState([]);
     const [currentTest, setCurrentTest] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -63,7 +62,7 @@ const StudentTest = () => {
     };
     console.log("Submitting result:", result)
     await axios.post("http://localhost:3000/api/assignment/submit", result);
-    navigate("/thank-you");
+    navigate("/thankyou");
   };
 
   if (!currentTest) {

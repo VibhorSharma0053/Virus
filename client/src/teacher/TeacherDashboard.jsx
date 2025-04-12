@@ -27,12 +27,13 @@ const TeacherDashboard = () => {
       {/* Dashboard content */}
       <div className="text-gray-700">
         <p>This is the teacher dashboard. Add your content here.</p>
+        
       </div>
 
       {/* Modal */}
       {isCreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh]">
+          <div className="bg-white w-full max-w-3xl p-6 rounded-lg shadow-lg overflow-y-auto max-h-[90vh] bg-white">
             <TeacherAssignmentCreation close={HandelClosingAssignment} />
           </div>
         </div>
