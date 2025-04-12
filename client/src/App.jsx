@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignUp";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 import TeacherAssignmentCreation from "./components/createAssignment";
+import TeacherDashboard from "./teacher/TeacherDashboard";
 
 import StudentTest from "./student/StudentDashboard";
 
@@ -21,7 +22,7 @@ const App = () => {
           <Route path="/account-access" element={<Account/>}/>
 
           <Route path="/student" element={<StudentTest />} />
-          <Route path="/teacher" element={<TeacherAssignmentCreation />} />
+          <Route path="/teacher" element={<TeacherDashboard />} />
         </Routes>
       </Router>
     </>

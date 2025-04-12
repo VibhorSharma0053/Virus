@@ -1,4 +1,4 @@
-import Nav from "./navbar"
+import Nav from "../components/navbar"
 const Account=()=>{
     return(
         <>

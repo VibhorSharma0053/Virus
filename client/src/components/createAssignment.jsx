@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const TeacherAssignmentCreation = () => {
+const TeacherAssignmentCreation = (props) => {
   const [testTitle, setTestTitle] = useState("");
   const [totalMarks, setTotalMarks] = useState("");
   const [allowedTime, setAllowedTime] = useState("");
   const [questions, setQuestions] = useState([
-    { questionText: "", optionA: "", optionB: "", optionC: "", optionD: "", correctAnswer: "" }
+    {
+      questionText: "",
+      optionA: "",
+      optionB: "",
+      optionC: "",
+      optionD: "",
+      correctAnswer: "",
+    },
   ]);
-  const [creatorEmail] = useState("teacher@example.com");  // Or get it from session/localStorage
+  const [creatorEmail] = useState("teacher@example.com"); // Or get it from session/localStorage
   const navigate = useNavigate();
 
   const handleQuestionChange = (index, event) => {
@@ -19,7 +26,17 @@ const TeacherAssignmentCreation = () => {
   };
 
   const addQuestion = () => {
-    setQuestions([...questions, { questionText: "", optionA: "", optionB: "", optionC: "", optionD: "", correctAnswer: "" }]);
+    setQuestions([
+      ...questions,
+      {
+        questionText: "",
+        optionA: "",
+        optionB: "",
+        optionC: "",
+        optionD: "",
+        correctAnswer: "",
+      },
+    ]);
   };
 
   const removeQuestion = (index) => {
@@ -35,13 +52,16 @@ const TeacherAssignmentCreation = () => {
       testTitle,
       totalMarks: Number(totalMarks),
       allowedTime: Number(allowedTime),
-      questions
+      questions,
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/api/assignment/post", assignmentData);
+      const response = await axios.post(
+        "http://localhost:3000/api/assignment/post",
+        assignmentData
+      );
       console.log(response.data);
-      navigate("/teacher");  // Navigate to a page with the list of assignments or confirmation
+      navigate("/teacher"); // Navigate to a page with the list of assignments or confirmation
     } catch (error) {
       console.error("Error creating assignment:", error);
     }
@@ -185,6 +205,7 @@ const TeacherAssignmentCreation = () => {
           >
             Create Assignment
           </button>
+          <button onClick={props.close}>Cancel</button>
         </div>
       </form>
     </div>
