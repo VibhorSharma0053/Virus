@@ -15,7 +15,7 @@ const Account = () => {
             review submissions seamlessly — even in low-connectivity
             environments.
           </p>
-          <Link to="/login" className="bg-black transition-all ease-in hover:rounded-3xl duration-150 text-white text-xl border-2 px-2 py-1 ml-75 mt-10">
+          <Link to="/login" className="bg-black text-white text-xl border-2 px-2 py-1 ml-75 mt-10">
             Login
           </Link>
         </div>
@@ -29,7 +29,7 @@ const Account = () => {
             internet access and sync your progress automatically when you're
             back online. Reliable, fast, and stress-free.
           </p>
-          <Link to="/login" className="bg-black  transition-all ease-in hover:rounded-3xl duration-150 text-white text-xl border-2 px-2 py-1 ml-65 mt-9">
+          <Link to="/login" className="bg-black text-white text-xl border-2 px-2 py-1 ml-65 mt-9">
             Login
           </Link>
         </div>
