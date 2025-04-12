@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const Login = () => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -79,7 +79,7 @@ const Login = () => {
         </div>
         <p className="text-center mt-4 text-black">
           Do not have an account?{" "}
-          <Link to="/signup" className="text-blue-500">
+          <Link to="/" className="text-blue-500">
             Sign Up
           </Link>
         </p>
@@ -88,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;
