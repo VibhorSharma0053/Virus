@@ -203,7 +203,13 @@ const TeacherAssignmentCreation = (props) => {
           >
             Create Assignment
           </button>
-          <button onClick={props.close} className="bg-red-500 text-white px-4 py-2 mx-5 mt-2 rounded">Cancel</button>
+
+          <button
+            onClick={props.close}
+            className="mt-4 px-4 py-2 rounded-lg text-red-600 border border-red-300 hover:bg-red-50 active:bg-red-100 transition duration-200"
+          >
+            Cancel
+          </button>
         </div>
       </form>
     </div>

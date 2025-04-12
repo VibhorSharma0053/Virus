@@ -6,7 +6,7 @@ const Account = () => {
   return (
     <>
       <NavBar />
-      <div className="flex items-center h-130 bg-white">
+      <div className="flex items-center h-130 bg-white px-7">
         <div className="w-7xl">
           <h1 className="font-bold text-4xl pl-65 italic">For Teachers</h1>
           <p className="text-gray-700 pt-5 pl-5 font-sans">
@@ -30,8 +30,8 @@ const Account = () => {
             internet access and sync your progress automatically when you're
             back online. Reliable, fast, and stress-free.
           </p>
-          <br />
-          <Link className="bg-black text-white border-2 px-2 py-1 ml-65 mt-9" to="/login">
+
+          <Link to="/login" className="bg-black text-white text-xl border-2 px-2 py-1 ml-65 mt-9">
             Login
           </Link>
         </div>
