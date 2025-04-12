@@ -5,7 +5,7 @@ import connectDB from "./db.js";
 
 import authRoutes from "./routes/authRoutes.js";
 import assignmentRoutes from "./routes/assignmentRoutes.js";
-// import syncRoutes from "./routes/sync.js";
+
 
 dotenv.config();
 const app = express();
@@ -13,8 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
-// app.use(cookieParser());
 app.use(cors({
     origin: 'http://localhost:5000',
     credentials: true
