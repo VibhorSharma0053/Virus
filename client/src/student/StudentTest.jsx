@@ -3,15 +3,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const StudentTest = () => {
-    const studentEmail=localStorage.getItem("userEmail") || "Student";
-    const [assignments, setAssignments] = useState([]);
-    const [currentTest, setCurrentTest] = useState(null);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answers, setAnswers] = useState({});
-    const [timer, setTimer] = useState(0);
-    const [startTime, setStartTime] = useState(null);
-    const navigate = useNavigate();
-  // Fetch assignments on mount
+  const studentEmail = localStorage.getItem("userEmail") || "Student";
+  const [assignments, setAssignments] = useState([]);
+  const [currentTest, setCurrentTest] = useState(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [timer, setTimer] = useState(0);
+  const [startTime, setStartTime] = useState(null);
+  const [questionStatus, setQuestionStatus] = useState({});
+  const navigate = useNavigate();
+
+  // Fetch assignments
   useEffect(() => {
     const fetchAssignments = async () => {
       const res = await axios.post("http://localhost:3000/api/assignment/getAll");
@@ -34,13 +36,32 @@ const StudentTest = () => {
   const startTest = (test) => {
     setCurrentTest(test);
     setStartTime(new Date());
-    setTimer(test.allowedTime * 60); // Convert minutes to seconds
+    setTimer(test.allowedTime * 60);
     setCurrentQuestionIndex(0);
     setAnswers({});
+
+    // Initialize status
+    const status = {};
+    test.questions.forEach((q, index) => {
+      status[index] = "unvisited";
+    });
+    status[0] = "visited";
+    setQuestionStatus(status);
   };
 
   const handleAnswer = (questionId, answer) => {
     setAnswers((prev) => ({ ...prev, [questionId]: answer }));
+    const updated = { ...questionStatus };
+    updated[currentQuestionIndex] = "answered";
+    setQuestionStatus(updated);
+  };
+
+  const goToQuestion = (index) => {
+    setCurrentQuestionIndex(index);
+    setQuestionStatus((prev) => ({
+      ...prev,
+      [index]: prev[index] === "unvisited" ? "visited" : prev[index],
+    }));
   };
 
   const handleSubmit = async () => {
@@ -60,7 +81,8 @@ const StudentTest = () => {
       endTime,
       totalMarks: score,
     };
-    console.log("Submitting result:", result)
+
+    console.log("Submitting result:", result);
     await axios.post("http://localhost:3000/api/assignment/submit", result);
     navigate("/thankyou");
   };
@@ -90,13 +112,52 @@ const StudentTest = () => {
 
   return (
     <div className="p-4">
-        <div className="flex justify-between">
-      <h2 className="text-xl font-bold mb-2">{currentTest.testTitle}</h2>
-      <p className="mb-4 font-bold text-red-500">Time Remaining: {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}</p>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold">{currentTest.testTitle}</h2>
+        <p className="font-bold text-red-500">
+          Time Remaining: {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}
+        </p>
       </div>
 
+      {/* Navigation Panel */}
+      <div className="mb-6 shadow-md bg-gray-50 p-2 rounded">
+        <h4 className="font-semibold mb-2">Question Navigation</h4>
+        <div className="flex flex-wrap gap-2">
+          {currentTest.questions.map((_, idx) => {
+            const status = questionStatus[idx];
+            let bgColor = "bg-gray-300";
+            if (status === "visited") bgColor = "bg-yellow-300";
+            if (status === "answered") bgColor = "bg-green-400";
+
+            return (
+              <button
+                key={idx}
+                onClick={() => goToQuestion(idx)}
+                className={`${bgColor} w-10 h-10 rounded-full font-bold`}
+              >
+                {idx + 1}
+              </button>
+            );
+          })}
+        </div>
+        <div className="mt-2 text-sm space-x-4">
+          <span className="inline-flex items-center">
+            <span className="inline-block w-4 h-4 bg-gray-300 rounded mr-1" /> Unvisited
+          </span>
+          <span className="inline-flex items-center">
+            <span className="inline-block w-4 h-4 bg-yellow-300 rounded mr-1" /> Visited
+          </span>
+          <span className="inline-flex items-center">
+            <span className="inline-block w-4 h-4 bg-green-400 rounded mr-1" /> Answered
+          </span>
+        </div>
+      </div>
+
+      {/* Question Block */}
       <div className="border p-4 rounded shadow mb-4">
-        <p className="font-semibold mb-2">Q{currentQuestionIndex + 1}: {question.questionText}</p>
+        <p className="font-semibold mb-2">
+          Q{currentQuestionIndex + 1}: {question.questionText}
+        </p>
         {["A", "B", "C", "D"].map((opt) => (
           <div key={opt} className="mb-1">
             <label>
@@ -113,17 +174,18 @@ const StudentTest = () => {
         ))}
       </div>
 
+      {/* Navigation Buttons */}
       <div className="flex justify-between">
         <button
           disabled={currentQuestionIndex === 0}
-          onClick={() => setCurrentQuestionIndex((i) => i - 1)}
+          onClick={() => goToQuestion(currentQuestionIndex - 1)}
           className="bg-gray-300 px-4 py-2 rounded"
         >
           Previous
         </button>
         {currentQuestionIndex < currentTest.questions.length - 1 ? (
           <button
-            onClick={() => setCurrentQuestionIndex((i) => i + 1)}
+            onClick={() => goToQuestion(currentQuestionIndex + 1)}
             className="bg-blue-500 text-white px-4 py-2 rounded"
           >
             Next
