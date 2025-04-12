@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./db.js";
 
 import authRoutes from "./routes/authRoutes.js";
-// import assignmentRoutes from "./routes/assignments.js";
+import assignmentRoutes from "./routes/assignmentRoutes.js";
 // import syncRoutes from "./routes/sync.js";
 
 dotenv.config();
@@ -22,7 +22,7 @@ app.use(cors({
 connectDB();
 
 app.use("/api/auth", authRoutes);
-// app.use("/api/assignments", assignmentRoutes);
+app.use("/api/assignment/", assignmentRoutes);
 // app.use("/api/sync", syncRoutes);
 
 const PORT = process.env.PORT || 5000;
