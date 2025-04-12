@@ -14,11 +14,17 @@ npm i tailwindcss
 
 API EndPoints
 http://localhost:3000/api/auth/login --> for login
+
 http://localhost:3000/api/auth/signup --> for signUp
+
 http://localhost:3000/api/assignment/post --> for admin to post assignment
+
 http://localhost:3000/api/assignment/getAll --> for student to get assignments
+
 http://localhost:3000/api/assignment/getByEmail --> to fetch the assignment by admin
+
 http://localhost:3000/api/assignment/submit --> update the result
+
 http://localhost:3000/api/resultByMockId --> return results of student
 
 workflow 
