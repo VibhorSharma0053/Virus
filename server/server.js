@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./db.js";
 
-// import authRoutes from "./routes/auth.js";
+import authRoutes from "./routes/authRoutes.js";
 // import assignmentRoutes from "./routes/assignments.js";
 // import syncRoutes from "./routes/sync.js";
 
@@ -13,9 +13,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+// app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:5000',
+    credentials: true
+}));
 connectDB();
 
-// app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 // app.use("/api/assignments", assignmentRoutes);
 // app.use("/api/sync", syncRoutes);
 
