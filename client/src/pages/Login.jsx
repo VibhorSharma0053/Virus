@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -20,6 +20,7 @@ const LoginPage = () => {
       setError("Password must be at least 8 Characters long.");
     } else {
         setError("")
+
     }
   };
 
