@@ -1,5 +1,9 @@
+
 import Nav from "./navbar"
 import { Link } from "react-router-dom"
+
+import Nav from "../components/navbar"
+
 const Account=()=>{
     return(
         <>

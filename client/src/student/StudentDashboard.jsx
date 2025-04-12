@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const StudentTest = () => {
-    const studentEmail = localStorage.getItem("studentEmail");
+    // const studentEmail = localStorage.getItem("studentEmail");
+    const studentEmail="dffdsf"
     const [assignments, setAssignments] = useState([]);
     const [currentTest, setCurrentTest] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -60,7 +61,7 @@ const StudentTest = () => {
       endTime,
       totalMarks: score,
     };
-
+    console.log("Submitting result:", result)
     await axios.post("http://localhost:3000/api/assignment/submit", result);
     navigate("/thank-you");
   };
@@ -68,7 +69,7 @@ const StudentTest = () => {
   if (!currentTest) {
     return (
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-4">Available Assignments</h2>
+        <h2 className="text-2xl font-bold mb-4">Available Assignments</h2>
         {assignments.map((test) => (
           <div key={test._id} className="border p-3 rounded shadow mb-4">
             <h3 className="text-lg font-semibold">{test.testTitle}</h3>
@@ -90,8 +91,10 @@ const StudentTest = () => {
 
   return (
     <div className="p-4">
+        <div className="flex justify-between">
       <h2 className="text-xl font-bold mb-2">{currentTest.testTitle}</h2>
-      <p className="mb-4">Time Remaining: {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}</p>
+      <p className="mb-4 font-bold text-red-500">Time Remaining: {Math.floor(timer / 60)}:{("0" + (timer % 60)).slice(-2)}</p>
+      </div>
 
       <div className="border p-4 rounded shadow mb-4">
         <p className="font-semibold mb-2">Q{currentQuestionIndex + 1}: {question.questionText}</p>
