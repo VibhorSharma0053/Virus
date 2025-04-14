@@ -5,7 +5,7 @@ import SignupPage from "./pages/SignUp";
 import Home from "./pages/Home";
 import Account from "./pages/Account";
 
-import Nav from "./pages/navbar.jsx";
+
 import ThankYou from "./pages/ThankYou.jsx";
 
 
