@@ -6,7 +6,15 @@ import Home from "./pages/Home";
 import Account from "./pages/Account";
 
 
+
+
+
+
 import ThankYou from "./pages/ThankYou.jsx";
+
+
+import TeacherAssignmentCreation from "./components/createAssignment";
+import TeacherDashboard from "./teacher/TeacherDashboard";
 
 
 
@@ -19,7 +27,6 @@ const App = () => {
           {/* <Route path="/" element={<HomePage />} /> */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-
           
           <Route path="/" element={<Home/>} />
           <Route path="/account-access" element={<Account/>}/>
@@ -28,6 +35,10 @@ const App = () => {
 
 
           <Route path="/student" element={<StudentTest />} />
+
+
+
+          <Route path="/teacher" element={<TeacherDashboard />} />
 
         </Routes>
       </Router>

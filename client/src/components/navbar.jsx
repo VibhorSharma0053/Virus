@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom"
-const Nav=()=>{
+
+
+const Navbar=()=>{
+
     return(
         <>
         <div className=" fixed bg-white flex h-17 w-screen z-40">
@@ -16,4 +19,4 @@ const Nav=()=>{
         </>
     )
 }
-export default Nav
+export default Navbar;
