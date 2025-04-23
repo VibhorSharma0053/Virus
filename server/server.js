@@ -21,7 +21,6 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/assignment/", assignmentRoutes);
-// app.use("/api/sync", syncRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
