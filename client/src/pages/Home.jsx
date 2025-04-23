@@ -1,8 +1,10 @@
 import img1 from "../assets/img1.png";
 import { Link } from "react-router-dom";
+import Navbar from "../components/navbar";
 const Home = () => {
   return (
     <>
+    <Navbar/>
       <div className="relative">
         <img src={img1} alt="Home" className="w-500 h-screen px-10 absolute" />
         <div className="absolute t-10 flex items-center h-100 bg-gray-300/80 w-280 mx-20 my-30">

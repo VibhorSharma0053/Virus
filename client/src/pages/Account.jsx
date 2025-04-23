@@ -1,13 +1,8 @@
-
-import Nav from "./navbar"
 import { Link } from "react-router-dom"
-
-import Nav from "../components/navbar"
 
 const Account=()=>{
     return(
         <>
-        <Nav />
         <div className="flex items-center h-130 bg-white">
             <div className="w-7xl">
             <h1 className="font-bold text-4xl pl-65 italic">Teacher</h1>

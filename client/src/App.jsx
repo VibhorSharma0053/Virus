@@ -4,12 +4,6 @@ import SignupPage from "./pages/SignUp";
 
 import Home from "./pages/Home";
 import Account from "./pages/Account";
-
-
-
-
-
-
 import ThankYou from "./pages/ThankYou.jsx";
 
 
