@@ -1,17 +1,5 @@
 import { Link } from "react-router-dom"
-import { Link } from "react-router-dom";
 
-import NavBar from "../components/navbar";
-
-
-        <div className="flex items-center h-130 bg-white">
-            <div className="w-7xl">
-            <h1 className="font-bold text-4xl pl-65 italic">Teacher</h1>
-            <p className="text-gray-700 pt-5 pl-5 font-sans">Simplify assignment management with an intelligent offline-first platform.
-                Create and distribute tasks, track student progress, and review submissions 
-                seamlessly — even in low-connectivity environments.</p>
-                <button className="bg-black text-white border-2 px-2 py-1 ml-75 mt-10">Login</button>
-            </div>
 const Account = () => {
   return (
     <>
